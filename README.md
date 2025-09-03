@@ -27,21 +27,21 @@ The project also includes a **test suite in `main()`** that demonstrates all fea
 - **Standard Library**: `<iostream>`, `<vector>`, `<string>`  
 
 ---
-              ┌──────────────────┐
-              │   Start Program   │
-              └───────┬──────────┘
+               ┌──────────────────┐
+               │   Start Program   │
+               └───────┬──────────┘
                        │
                        ▼
-             ┌──────────────────────┐
-             │   Create Trie Root   │
-             └───────┬─────────────┘
-                     │
-                     ▼
-        ┌─────────────────────────────┐
-        │ Insert Words into the Trie  │
-        └───────┬────────────────────┘
-                │
-                ▼
+              ┌─────────────────────┐
+              │  Create Trie Root   │
+              └───────┬─────────────┘
+                      │
+                      ▼
+          ┌────────────────────────────┐
+          │ Insert Words into the Trie │
+          └───────┬────────────────────┘
+                  │
+                  ▼
     ┌─────────────────────────────┐
     │ Perform Operations (Menu)   │
     │ 1. Insert                   │
@@ -50,7 +50,7 @@ The project also includes a **test suite in `main()`** that demonstrates all fea
     │ 4. Autocomplete             │
     └─────────────┬───────────────┘
                   │
-          ┌────────────┼────────────┐
+           ┌────────────┼────────────┐
           ▼              ▼            ▼
      ┌────────┐  ┌────────┐  ┌────────────┐
      │ Search │  │ Prefix │  │Autocomplete│
@@ -71,5 +71,5 @@ The project also includes a **test suite in `main()`** that demonstrates all fea
                    ▼
             ┌────────────┐
             │    End     │
-          └────────────┘
+            └────────────┘
 
