@@ -27,4 +27,49 @@ The project also includes a **test suite in `main()`** that demonstrates all fea
 - **Standard Library**: `<iostream>`, `<vector>`, `<string>`  
 
 ---
+               ┌──────────────────┐
+               │   Start Program   │
+               └───────┬──────────┘
+                       │
+                       ▼
+             ┌──────────────────────┐
+             │   Create Trie Root   │
+             └───────┬─────────────┘
+                     │
+                     ▼
+        ┌─────────────────────────────┐
+        │ Insert Words into the Trie  │
+        └───────┬────────────────────┘
+                │
+                ▼
+    ┌─────────────────────────────┐
+    │ Perform Operations (Menu)   │
+    │ 1. Insert                   │
+    │ 2. Search                   │
+    │ 3. StartsWith (Prefix)      │
+    │ 4. Autocomplete             │
+    └─────────────┬───────────────┘
+                  │
+     ┌────────────┼────────────┐
+     ▼            ▼            ▼
+ ┌────────┐  ┌────────┐  ┌────────────┐
+ │ Search │  │ Prefix │  │Autocomplete│
+ └───┬────┘  └───┬────┘  └─────┬──────┘
+     │           │             │
+     ▼           ▼             ▼
+ Result:     Result:       Result:
+ FOUND/      EXISTS/       List of words
+ NOT FOUND   NOT EXISTS    with prefix
+     │           │             │
+     └───────────┴─────────────┘
+                  │
+                  ▼
+         ┌───────────────────┐
+         │ Continue or Exit? │
+         └───────┬───────────┘
+                 │
+                 ▼
+          ┌────────────┐
+          │    End     │
+          └────────────┘
 
