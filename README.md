@@ -27,9 +27,9 @@ The project also includes a **test suite in `main()`** that demonstrates all fea
 - **Standard Library**: `<iostream>`, `<vector>`, `<string>`  
 
 ---
-               ┌──────────────────┐
-               │   Start Program   │
-               └───────┬──────────┘
+              ┌──────────────────┐
+              │   Start Program   │
+              └───────┬──────────┘
                        │
                        ▼
              ┌──────────────────────┐
