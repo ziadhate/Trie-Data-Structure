@@ -7,7 +7,7 @@ using namespace std;
 class TrieNode {
 public:
     // Each node has up to 26 children (for each letter)
-    TrieNode* children[26];
+    TrieNode* children[26];//array
 
     // Marks if this node completes a word
     bool isEndOfWord;
@@ -40,6 +40,7 @@ public:
     // Output: none
     // Purpose: Initialize the Trie with a root node
     Trie() {
+        root=new TrieNode();
         // TODO: Implement this function
     }
 
@@ -48,6 +49,16 @@ public:
     // Output: none
     // Purpose: Add a word to the Trie by creating nodes for each character
     void insert(string word) {
+       TrieNode* current =root;
+
+       for( char ch : word){
+            int i= ch-'a';
+        if(current->children[i]==nullptr){
+            current->children[i]=new TrieNode();
+        }
+        current=current ->children[i];
+       }
+       current->isEndOfWord=true;
         // TODO: Implement this function
     }
 
