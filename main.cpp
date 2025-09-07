@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <string>
 using namespace std;
@@ -8,10 +8,9 @@ class TrieNode {
 public:
     // Each node has up to 26 children (for each letter)
     TrieNode* children[26];
-
+    TrieNode* children[26];//array
     // Marks if this node completes a word
     bool isEndOfWord;
-
     // Constructor
     TrieNode() {
         isEndOfWord = false;
@@ -40,6 +39,10 @@ public:
     // Output: none
     // Purpose: Initialize the Trie with a root node
     Trie() {
+
+
+        root = new TrieNode();
+
         // TODO: Implement this function
     }
 
@@ -48,6 +51,19 @@ public:
     // Output: none
     // Purpose: Add a word to the Trie by creating nodes for each character
     void insert(string word) {
+
+
+        TrieNode* current = root;
+
+        for (char ch : word) {
+            int i = ch - 'a';
+            if (current->children[i] == nullptr) {
+                current->children[i] = new TrieNode();
+            }
+            current = current->children[i];
+        }
+        current->isEndOfWord = true;
+
         // TODO: Implement this function
     }
 
@@ -55,18 +71,40 @@ public:
     // Input: word to search for (string)
     // Output: boolean indicating if the word exists
     // Purpose: Check if the complete word exists in the Trie
-    bool search(string word) {
-        // TODO: Implement this function
-        return false; // placeholder
+    bool search(const string& word) {
+        TrieNode* current = root;
+        for (char ch : word) {
+            if (ch < 'a' || ch > 'z') return false; // لازم الكلمة تكون lowercase
+            int index = ch - 'a';
+            if (current->children[index] == nullptr) {
+                return false;
+            }
+            current = current->children[index];
+        }
+        return current->isEndOfWord;
     }
+
 
     // Check if any word starts with the given prefix
     // Input: prefix to check (string)
     // Output: boolean indicating if any word has this prefix
     // Purpose: Verify if the prefix exists in the Trie (doesn't need to be a complete word)
+
+
     bool startsWith(string prefix) {
-        // TODO: Implement this function
-        return false; // placeholder
+        TrieNode* node = root;   // start from the root
+        for (char c : prefix) {
+            if (!isalpha(c)) return false;   // ignore non-alphabet characters
+            c = tolower(c);                  // convert to lowercase
+            int index = c - 'a';             // find the index of the character
+
+            if (node->children[index] == nullptr) {
+                return false; // prefix not found
+            }
+
+            node = node->children[index];    // move to the next character
+        }
+        return true; // prefix exists
     }
 
     // Get all words that start with the given prefix
