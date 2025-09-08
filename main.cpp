@@ -74,7 +74,7 @@ public:
     bool search(const string& word) {
         TrieNode* current = root;
         for (char ch : word) {
-            if (ch < 'a' || ch > 'z') return false; // لازم الكلمة تكون lowercase
+            if (ch < 'a' || ch > 'z') return false; 
             int index = ch - 'a';
             if (current->children[index] == nullptr) {
                 return false;
