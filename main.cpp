@@ -8,7 +8,7 @@ class TrieNode {
 public:
     // Each node has up to 26 children (for each letter)
     TrieNode* children[26];
-    TrieNode* children[26];//array
+
     // Marks if this node completes a word
     bool isEndOfWord;
     // Constructor
