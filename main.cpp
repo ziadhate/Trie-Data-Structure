@@ -124,11 +124,25 @@ public:
     // Input: prefix to complete (string)
     // Output: vector of strings that start with the prefix
     // Purpose: Find all complete words that begin with the given prefix
-    vector<string> autocomplete(string prefix) {
-        vector<string> suggestions;
-        // TODO: Implement this function
-        return suggestions;
+   vector<string> autocomplete(string prefix) {
+    vector<string> suggestions;
+    TrieNode* node = root;
+
+    // Traverse down the Trie according to the prefix
+    for (char c : prefix) {
+        int index = tolower(c) - 'a';
+        if (node->children[index] == nullptr) {
+            return suggestions; // prefix not found, return empty
+        }
+        node = node->children[index];
     }
+
+    // Now we are at the node for the last character in the prefix
+    findAllWords(node, prefix, suggestions);
+
+    return suggestions;
+}
+
 };
 
 // Main function
@@ -271,6 +285,79 @@ int main() {
     }
 
     cout << "\n=== ALL TESTS COMPLETED ===" << endl;
+
+    /*
+    phase 2
+    Trie trie;
+    int choice;
+    string word, prefix;
+
+    cout << "=== TRIE DATA STRUCTURE MENU ===" << endl;
+
+    do {
+        cout << "\nChoose an operation:" << endl;
+        cout << "1. Insert Word" << endl;
+        cout << "2. Search Word" << endl;
+        cout << "3. Check Prefix (startsWith)" << endl;
+        cout << "4. Autocomplete" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            cout << "Enter word to insert: ";
+            cin >> word;
+            trie.insert(word);
+            cout << "Inserted successfully." << endl;
+            break;
+
+        case 2:
+            cout << "Enter word to search: ";
+            cin >> word;
+            if (trie.search(word))
+                cout << "Result: FOUND" << endl;
+            else
+                cout << "Result: NOT FOUND" << endl;
+            break;
+
+        case 3:
+            cout << "Enter prefix: ";
+            cin >> prefix;
+            if (trie.startsWith(prefix))
+                cout << "Result: PREFIX EXISTS" << endl;
+            else
+                cout << "Result: PREFIX DOESN'T EXIST" << endl;
+            break;
+
+        case 4:
+            cout << "Enter prefix for autocomplete: ";
+            cin >> prefix;
+            {
+                vector<string> results = trie.autocomplete(prefix);
+                if (results.empty()) {
+                    cout << "No suggestions found." << endl;
+                } else {
+                    cout << "Suggestions: ";
+                    for (size_t i = 0; i < results.size(); i++) {
+                        if (i > 0) cout << ", ";
+                        cout << results[i];
+                    }
+                    cout << endl;
+                }
+            }
+            break;
+
+        case 5:
+            cout << "Exiting program..." << endl;
+            break;
+
+        default:
+            cout << "Invalid choice, try again." << endl;
+        }
+
+    } while (choice != 5);
+*/
 
     return 0;
 }
